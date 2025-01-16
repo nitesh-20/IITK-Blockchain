@@ -1,24 +1,61 @@
+/* Navbar container */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .nav-links a:hover {
-    color: #f0a500;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #1a1a1a; /* Dark background */
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Brand/logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-brand .logo {
+  height: 40px;
+}
+
+/* Navigation links */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links li:hover {
+  background-color: #2d2d2d; /* Slight hover effect */
+}
+
+.navbar-links .active {
+  background-color: #ff007f; /* Pink active button */
+  color: white;
+}
+
+/* Connect Wallet button */
+.connect-wallet {
+  background-color: #5b22b7; /* Purple button */
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.connect-wallet:hover {
+  background-color: #7a42e4; /* Lighter purple on hover */
+}
