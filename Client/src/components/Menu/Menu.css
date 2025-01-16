@@ -1,0 +1,16 @@
+.menu {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
