@@ -1,15 +1,15 @@
-/* Navbar container */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #1a1a1a; /* Dark background */
+  background-color: #0e0707;
   color: white;
   font-family: Arial, sans-serif;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-/* Brand/logo */
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -20,13 +20,14 @@
   height: 40px;
 }
 
-/* Navigation links */
 .navbar-links {
   display: flex;
   gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .navbar-links li {
@@ -36,18 +37,44 @@
   transition: background-color 0.3s ease;
 }
 
+.navbar-links li a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .navbar-links li:hover {
-  background-color: #2d2d2d; /* Slight hover effect */
+  background-color: #2d2d2d;
 }
 
 .navbar-links .active {
-  background-color: #ff007f; /* Pink active button */
+  background-color: #ff007f;
   color: white;
 }
 
-/* Connect Wallet button */
+/* Flex container for the buttons */
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  position: relative;
+}
+
+.Login {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto; /* Adjust width based on content */
+}
+
+.Login:hover {
+  background-color: #0056b3;
+}
+
 .connect-wallet {
-  background-color: #5b22b7; /* Purple button */
+  background-color: #5b22b7;
   color: white;
   padding: 8px 15px;
   border: none;
@@ -57,5 +84,63 @@
 }
 
 .connect-wallet:hover {
-  background-color: #7a42e4; /* Lighter purple on hover */
+  background-color: #7a42e4;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0;
+    display: none;
+  }
+
+  .navbar-links.active {
+    display: block;
+  }
+
+  .navbar-links li {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+  }
+
+  .navbar-brand {
+    margin-bottom: 10px;
+  }
+
+  .navbar-toggle {
+    display: block;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .navbar-toggle div {
+    background-color: white;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+  }
+
+  /* Stacking buttons vertically on mobile */
+  .button-container {
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    position: static; /* Adjust for mobile view */
+    margin-left: 10px;
+  }
+
+  .Login,
+  .connect-wallet {
+    width: auto; /* Adjust width based on content */
+    text-align: center;
+  }
 }

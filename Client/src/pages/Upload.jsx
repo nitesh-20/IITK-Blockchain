@@ -1,46 +1,45 @@
-// src/components/Upload.js
-import React, { useState } from "react";
+// client/src/pages/upload.jsx
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const Upload = () => {
-  const [file, setFile] = useState(null);
+  const [tweetContent, setTweetContent] = useState('');
+  const [message, setMessage] = useState('');
 
-  // File select karne ka handler
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+  // Function to handle tweet submission
+  const handleTweetSubmit = async (e) => {
+    e.preventDefault();
 
-  // File upload karne ka handler
-  const handleUpload = async () => {
-    if (!file) {
-      alert("Please select a file to upload.");
+    if (!tweetContent) {
+      setMessage('Please enter a tweet.');
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const response = await fetch("http://localhost:5000/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert("File uploaded successfully!");
-      } else {
-        alert("File upload failed.");
-      }
+      // Sending the tweet to the backend
+      const response = await axios.post('/api/tweets/create', { content: tweetContent });
+      setMessage('Tweet posted successfully!');
+      setTweetContent('');
     } catch (error) {
-      console.error("Error uploading file:", error);
-      alert("Error uploading file.");
+      setMessage('Error posting tweet, try again later.');
+      console.error(error);
     }
   };
 
   return (
     <div>
-      <h2>Upload Picture or Video</h2>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <h1>Upload Tweet</h1>
+      <form onSubmit={handleTweetSubmit}>
+        <textarea
+          value={tweetContent}
+          onChange={(e) => setTweetContent(e.target.value)}
+          placeholder="Write your tweet here..."
+          rows="4"
+          cols="50"
+        ></textarea>
+        <button type="submit">Post Tweet</button>
+      </form>
+      {message && <p>{message}</p>}
     </div>
   );
 };

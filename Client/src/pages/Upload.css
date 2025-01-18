@@ -1,0 +1,65 @@
+
+.upload-container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  .upload-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .upload-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .upload-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .preview-container {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .preview-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .preview-video {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
