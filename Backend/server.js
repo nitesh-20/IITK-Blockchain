@@ -1,76 +1,37 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const mysql = require('mysql2');
 const cors = require('cors');
-const sequelize = require('./config/database'); // Database configuration
-const jwt = require('jsonwebtoken'); // JWT for token generation
-const TronWeb = require('tronweb'); // TronWeb for TRON blockchain interaction
-require('dotenv').config(); // Load environment variables
+const bodyParser = require('body-parser');
 
-const userRoutes = require('./routes/userRoutes'); // User routes
-const tweetRoutes = require('./routes/tweetRoutes'); // Tweet routes
-
+// Initialize app
 const app = express();
-const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 5000
-
-// TRON Web initialization
-const tronWeb = new TronWeb({
-  fullHost: "https://api.trongrid.io", // Public TRON API endpoint
-});
-
-// Sample secret for JWT
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const port = 5001;
 
 // Middleware
-app.use(bodyParser.json()); // Parse incoming JSON requests
-app.use(cors()); // Enable CORS for cross-origin requests
+app.use(cors()); // Enable CORS
+app.use(bodyParser.json()); // Parse JSON bodies
 
-// API Routes
-app.use('/api/users', userRoutes); // User-related routes
-app.use('/api/tweets', tweetRoutes); // Tweet-related routes
+// Database connection
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'Nitesh@2005', // use your database password
+  database: 'tweets_db', // use your database name
+});
 
-// New Route for TRON login
-app.post("/api/users/tron-login", async (req, res) => {
-  const { address, signedMessage } = req.body;
-
-  try {
-    // Verify the signature using TronWeb
-    const message = "Login to MyApp"; // The same message the user signed
-    const isValid = await tronWeb.trx.verifyMessage(message, signedMessage, address);
-
-    if (isValid) {
-      // Signature is valid, create a JWT token
-      const token = jwt.sign({ address }, JWT_SECRET, { expiresIn: "1h" });
-
-      // Return the token to the frontend
-      res.json({ token });
-    } else {
-      res.status(400).json({ message: "Invalid signature." });
-    }
-  } catch (err) {
-    res.status(500).json({ message: "Server error during TRON login verification." });
-    console.error(err);
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
   }
+  console.log('Connected to the database');
 });
 
-// Global Error-Handling Middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack); // Log the error stack trace for debugging
-  res.status(500).json({ 
-    message: 'Something went wrong', 
-    error: err.message 
-  }); // Send a generic error response
-});
+// Routes
+const tweetRoutes = require('./routes/tweetRoutes');
+app.use('/api/tweets', tweetRoutes); // Route for tweet-related operations
 
-// Test Database Connection and Start Server
-sequelize
-  .authenticate() // Check database connection
-  .then(() => {
-    console.log('Database connected successfully');
-    return sequelize.sync(); // Sync database models
-  })
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

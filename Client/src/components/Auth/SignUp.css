@@ -1,0 +1,94 @@
+/* General body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to left, #ff7e5f, #feb47b);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Centering the form */
+  form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  /* Input and label styling */
+  div {
+    margin-bottom: 25px;
+    position: relative;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #555;
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Input styling */
+  input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus {
+    border-color: #ff7e5f;
+    outline: none;
+  }
+  
+  /* Button styling */
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background: #feb47b;
+  }
+  
+  /* Login link text */
+  p {
+    color: #555;
+    font-size: 14px;
+  }
+  
+  a {
+    color: #ff7e5f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

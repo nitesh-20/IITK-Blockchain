@@ -1,10 +1,9 @@
 const express = require('express');
-const tweetController = require('../controllers/tweetController');
-const authenticateToken = require('../middlewares/authMiddleware'); // JWT authentication middleware
 const router = express.Router();
+const { getTweets, createTweet } = require('../controllers/tweetController');
 
-// Protected Routes
-router.post('/create', authenticateToken, tweetController.createTweet); // Create a new tweet
-router.get('/trending', authenticateToken, tweetController.getTrendingTweets); // Get trending tweets
+// Define routes
+router.get('/', getTweets);          // Get all tweets
+router.post('/create', createTweet); // Create a new tweet
 
 module.exports = router;

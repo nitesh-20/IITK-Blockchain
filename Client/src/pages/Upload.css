@@ -1,65 +1,149 @@
-
+/* Overall container styling */
 .upload-container {
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-  }
-  
-  .upload-title {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .upload-content {
-    display: flex;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1, h2 {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+}
+
+/* Textarea styling */
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+/* Message after submitting tweet */
+p {
+  font-size: 14px;
+  color: #4a90e2;
+  text-align: center;
+}
+
+/* Content container styling */
+.content-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Left section (Trending Tweets) */
+.left-section {
+  width: 50%;
+}
+
+.tweet-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tweet-card p {
+  color: #333;
+  font-size: 16px;
+}
+
+button {
+  background-color: #34d399;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #059669;
+}
+
+/* Right section (Related Content) */
+.right-section {
+  width: 50%;
+}
+
+.content-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.content-card p {
+  color: #333;
+  font-size: 14px;
+}
+
+.content-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Trends near you section */
+.trends-near-you {
+  margin-top: 50px;
+}
+
+.trend-card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.trend-card p {
+  color: #333;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-container {
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
   }
-  
-  .upload-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .upload-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .upload-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .preview-container {
-    margin-top: 15px;
-    text-align: center;
-  }
-  
-  .preview-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  .preview-video {
+
+  .left-section, .right-section {
     width: 100%;
-    border-radius: 8px;
-    border: 1px solid #ddd;
   }
-  
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import Menu from "./components/Menu/Menu";
 import Upload from "./pages/Upload";
 import TradeSphere from "./pages/TradeSphere";
